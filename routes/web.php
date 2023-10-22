@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\Candidate\CandidateController;
+use App\Http\Controllers\Admin\Employer\EmployerController;
+use App\Http\Controllers\JobAdvertisement\ListJobController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,3 +32,29 @@ Route::middleware('auth')->group(function () {
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 });
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | All Advertisements
+  |--------------------------------------------------------------------------
+  */
+Route::get('list-jobs', [ListJobController::class, 'index']);
+Route::get('show-job/{employer}', [ListJobController::class, 'show'])->name('show-job');
+
+
+  /*
+  |--------------------------------------------------------------------------
+  | Employer
+  |--------------------------------------------------------------------------
+  */
+Route::resource('employer', EmployerController::class);
+
+
+
+ /*
+ |--------------------------------------------------------------------------
+ | Candidate
+ |--------------------------------------------------------------------------
+ */
+Route::resource('candidate', CandidateController::class);

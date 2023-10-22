@@ -2,8 +2,15 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Candidate\Candidate;
+use App\Models\Employer\Employer;
+use App\Models\User;
+use Database\Seeders\Candidate\CandidateTableSeeder;
+use Database\Seeders\Employer\EmployerTableSeeder;
+use DB;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,13 +19,24 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        Schema::disableForeignKeyConstraints();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        DB::table('employers')->truncate();
+        Employer::factory(20)->create();
+
+        DB::table('candidates')->truncate();
+        Candidate::factory(20)->create();
+
+        DB::table('users')->truncate();
+
+        $this->call([
+            //EmployerTableSeeder::class,
+            //CandidateTableSeeder::class,
+            UserTableSeeder::class,
+        ]);
+
+        Schema::enableForeignKeyConstraints();
     }
 }
