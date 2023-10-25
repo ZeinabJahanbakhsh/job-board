@@ -22,7 +22,7 @@ class CandidateFactory extends Factory
         return [
             'first_name' => $this->faker->firstName,
             'last_name'  => $this->faker->lastName,
-            'email'      => $this->faker->companyEmail,
+            'email'      => $this->faker->email,
             'mobile'     => $this->faker->phoneNumber,
             'file'       =>  UploadedFile::fake()->create(fake()->monthName . '.pdf')->store('factory-resumes')
         ];

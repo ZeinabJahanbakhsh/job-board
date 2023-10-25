@@ -48,6 +48,7 @@
                 <div class="col-4">
                     <button type="submit" class="btn btn-primary btn-block">{{ __('Login') }}</button>
                 </div>
+
                 <!-- /.col -->
             </div>
         </form>
@@ -57,6 +58,26 @@
                 <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
             </p>
         @endif
+
+        <!-- Github/Google -->
+        <div class="row">
+
+            <div class="col-6">
+                <a class="btn text-white text-center btn-block" href="auth/github/redirect" style="background-color: #333333;" role="button">
+                    <i class="fab fa-github"></i>
+                    {{ __('Github') }}
+                </a>
+            </div>
+
+            <div class="col-6">
+                <a class="btn text-white text-center btn-block" style="background-color: #dd4b39;" href="/auth/google/redirect" role="button">
+                    <i class="fab fa-google"></i>
+                    {{ __('Google') }}
+                </a>
+            </div>
+
+        </div>
+
     </div>
     <!-- /.login-card-body -->
 @endsection

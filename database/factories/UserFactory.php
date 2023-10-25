@@ -20,7 +20,47 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        return [
+        $users['employer'] = [
+            'name'              => fake()->name(),
+            'email'             => fake()->unique()->safeEmail(),
+            'employer_id'       => Employer::all()->random('1')->value('id'),
+            'candidate_id'      => null,
+            'email_verified_at' => now(),
+            'password'          => bcrypt('123456'),
+            'remember_token'    => Str::random(10),
+        ];
+
+        $users['candidate'] = [
+            'name'              => fake()->name(),
+            'email'             => fake()->unique()->safeEmail(),
+            'employer_id'       => null,
+            'candidate_id'      => Candidate::all()->random('1')->value('id'),
+            'email_verified_at' => now(),
+            'password'          => bcrypt('123456'),
+            'remember_token'    => Str::random(10),
+        ];
+
+        /*$users = [
+            'name'              => fake()->name(),
+            'email'             => fake()->unique()->safeEmail(),
+            'email_verified_at' => now(),
+            'employer_id'       => Employer::all()->random(1)->value('id') ,
+            'candidate_id'      => Candidate::all()->random(1)->value('id'),
+            'password'          => bcrypt('123456'),
+            'remember_token'    => Str::random(10),
+        ];*/
+
+       /* if ($users['employer_id']) {
+            $users['candidate_id'] = null;
+        }
+        if($users['candidate_id']){
+            $users['employer_id'] = null;
+        }*/
+
+        //dd( array_rand($users)); //candidate
+        return $users[ array_rand($users)];
+
+        /*return [
             'name'              => fake()->name(),
             'email'             => fake()->unique()->safeEmail(),
             'employer_id'       => Employer::all()->random('1')->value('id'),
@@ -28,7 +68,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password'          => bcrypt('123456'),
             'remember_token'    => Str::random(10),
-        ];
+        ];*/
     }
 
     /**

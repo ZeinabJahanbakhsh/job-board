@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Admin\Candidate\CandidateController;
 use App\Http\Controllers\Admin\Employer\EmployerController;
+use App\Http\Controllers\Auth\Socialite\SocialiteController;
 use App\Http\Controllers\JobAdvertisement\ListJobController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,28 +35,35 @@ Route::middleware('auth')->group(function () {
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 });
 
+/*
+ |--------------------------------------------------------------------------
+ | Socialite
+ |--------------------------------------------------------------------------
+ */
+Route::get('/auth/{provider}/redirect', [SocialiteController::class, 'redirect']);
+Route::get('/auth/{provider}/callback', [SocialiteController::class, 'callback']);
 
-  /*
-  |--------------------------------------------------------------------------
-  | All Advertisements
-  |--------------------------------------------------------------------------
-  */
-Route::get('list-jobs', [ListJobController::class, 'index']);
+
+/*
+|--------------------------------------------------------------------------
+| All Advertisements
+|--------------------------------------------------------------------------
+*/
+Route::get('list-jobs', [ListJobController::class, 'index'])->name('list-jobs');
 Route::get('show-job/{employer}', [ListJobController::class, 'show'])->name('show-job');
 
 
-  /*
-  |--------------------------------------------------------------------------
-  | Employer
-  |--------------------------------------------------------------------------
-  */
-Route::resource('employer', EmployerController::class);
+/*
+|--------------------------------------------------------------------------
+| Employer
+|--------------------------------------------------------------------------
+*/
+Route::resource('employers', EmployerController::class);
 
 
-
- /*
- |--------------------------------------------------------------------------
- | Candidate
- |--------------------------------------------------------------------------
- */
-Route::resource('candidate', CandidateController::class);
+/*
+|--------------------------------------------------------------------------
+| Candidate
+|--------------------------------------------------------------------------
+*/
+Route::resource('candidates', CandidateController::class)->except(['destroy', 'index']);
