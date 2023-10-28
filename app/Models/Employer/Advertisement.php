@@ -5,6 +5,7 @@ namespace App\Models\Employer;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
 class Advertisement extends Model
@@ -32,5 +33,11 @@ class Advertisement extends Model
         return $this->belongsTo(Employer::class);
     }
 
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class, 'advertisement_tag')
+                    ->using(AdvertisementTag::class)
+                    ->withTimestamps();
+    }
 
 }

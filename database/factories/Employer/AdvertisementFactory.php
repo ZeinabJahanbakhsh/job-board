@@ -20,7 +20,7 @@ class AdvertisementFactory extends Factory
         return [
             'employer_id' => Employer::all()->random('1')->value('id'),
             'title'       => $this->faker->jobTitle,
-            'description' => $this->faker->text
+            'description' => $this->faker->text('2000')
         ];
     }
 }

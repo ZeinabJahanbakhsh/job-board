@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin\Candidate\CandidateController;
 use App\Http\Controllers\Admin\Employer\EmployerController;
 use App\Http\Controllers\Auth\Socialite\SocialiteController;
-use App\Http\Controllers\JobAdvertisement\ListJobController;
+use App\Http\Controllers\JobAdvertisement\ListAdvertisementController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -49,8 +49,8 @@ Route::get('/auth/{provider}/callback', [SocialiteController::class, 'callback']
 | All Advertisements
 |--------------------------------------------------------------------------
 */
-Route::get('list-jobs', [ListJobController::class, 'index'])->name('list-jobs');
-Route::get('show-job/{employer}', [ListJobController::class, 'show'])->name('show-job');
+Route::get('list-advertisements', [ListAdvertisementController::class, 'index'])->name('list-advertisements');
+Route::get('show-job/{advertisement}', [ListAdvertisementController::class, 'show'])->name('show-job');
 
 
 /*
