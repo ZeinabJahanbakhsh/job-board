@@ -12,6 +12,8 @@ use App\Models\Employer\Tag;
 use App\Models\User;
 use Database\Seeders\Candidate\CandidateTableSeeder;
 use Database\Seeders\Employer\EmployerTableSeeder;
+use Database\Seeders\Permission\PermissionTableSeeder;
+use Database\Seeders\Role\RoleTableSeeder;
 use DB;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
@@ -52,6 +54,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserTableSeeder::class,
+            PermissionTableSeeder::class,
+            RoleTableSeeder::class
         ]);
 
         Schema::enableForeignKeyConstraints();
