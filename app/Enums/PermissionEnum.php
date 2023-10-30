@@ -4,7 +4,7 @@ namespace App\Enums;
 
 enum PermissionEnum: string
 {
-    case IsAdmin     = 'IS_ADMIN';
-    case IsEmployer  = 'IS_EMPLOYER';
-    case IsCandidate = 'IS_CANDIDATE';
+    case IsAdmin     = 'is_admin';
+    case IsEmployer  = 'is_employer';
+    case IsCandidate = 'is_candidate';
 }

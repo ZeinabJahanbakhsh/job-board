@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\JobAdvertisement;
 
+use App\Enums\RoleEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Employer\Advertisement;
 use App\Models\Employer\Employer;

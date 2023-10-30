@@ -20,7 +20,7 @@
                 <div class="col-lg-12">
 
                     <div class="alert alert-info">
-                        Sample table page
+                        All Users
                     </div>
 
                     <div class="card">
@@ -31,6 +31,7 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Role</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -38,6 +39,7 @@
                                     <tr>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
+                                        <td>{{ $user->roles()->get()->value('name') }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

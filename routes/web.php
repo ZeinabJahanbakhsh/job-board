@@ -4,8 +4,10 @@ use App\Http\Controllers\Admin\Candidate\CandidateController;
 use App\Http\Controllers\Admin\Employer\EmployerController;
 use App\Http\Controllers\Auth\Socialite\SocialiteController;
 use App\Http\Controllers\JobAdvertisement\ListAdvertisementController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use Laravel\Socialite\Facades\Socialite;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,21 +20,28 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+/*
+|--------------------------------------------------------------------------
+| All Advertisements
+|--------------------------------------------------------------------------
+*/
+
+Route::controller(ListAdvertisementController::class)->group(function () {
+    Route::get('/', 'index')->name('list-advertisements');
+    Route::get('show-job/{advertisement}', [ListAdvertisementController::class, 'show'])->name('show-job');
 });
+
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
-    Route::view('about', 'about')->name('about');
+    Route::get('users', [UserController::class, 'index'])->name('users.index')
+         ->middleware('is_admin');
 
-    Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
-
-    Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
-    Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+    Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 /*
@@ -46,19 +55,11 @@ Route::get('/auth/{provider}/callback', [SocialiteController::class, 'callback']
 
 /*
 |--------------------------------------------------------------------------
-| All Advertisements
-|--------------------------------------------------------------------------
-*/
-Route::get('list-advertisements', [ListAdvertisementController::class, 'index'])->name('list-advertisements');
-Route::get('show-job/{advertisement}', [ListAdvertisementController::class, 'show'])->name('show-job');
-
-
-/*
-|--------------------------------------------------------------------------
 | Employer
 |--------------------------------------------------------------------------
 */
-Route::resource('employers', EmployerController::class);
+Route::resource('employers', EmployerController::class)
+     ->middleware(['auth', 'is_employer']);
 
 
 /*
@@ -66,4 +67,5 @@ Route::resource('employers', EmployerController::class);
 | Candidate
 |--------------------------------------------------------------------------
 */
-Route::resource('candidates', CandidateController::class)->except(['destroy', 'index']);
+Route::resource('candidates', CandidateController::class)->except(['destroy', 'index'])
+     ->middleware(['auth', 'is_candidate']);
