@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('advertisement_tag', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('advertisement_id')->constrained();
-            $table->foreignId('tag_id')->constrained();
+            $table->string('name', '100');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('advertisement_tag');
+        Schema::dropIfExists('categories');
     }
 };

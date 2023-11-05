@@ -18,15 +18,15 @@ class PermissionTableSeeder extends Seeder
         $data = collect([
             [
                 'name' => 'is_admin',
-                'code' => 'IS_ADMIN'
+                'code' => 'is_admin'
             ],
             [
                 'name' => 'is_employer',
-                'code' => 'IS_EMPLOYER'
+                'code' => 'is_employer'
             ],
             [
                 'name' => 'is_candidate',
-                'code' => 'IS_CANDIDATE'
+                'code' => 'is_candidate'
             ],
         ]);
 

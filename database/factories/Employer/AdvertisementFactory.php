@@ -2,6 +2,7 @@
 
 namespace Database\Factories\Employer;
 
+use App\Models\Employer\Category;
 use App\Models\Employer\Employer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,6 +20,7 @@ class AdvertisementFactory extends Factory
     {
         return [
             'employer_id' => Employer::all()->random('1')->value('id'),
+            'category_id' => Category::all()->random('1')->value('id'),
             'title'       => $this->faker->jobTitle,
             'description' => $this->faker->text('2000')
         ];

@@ -18,7 +18,8 @@ class Advertisement extends Model
     ];
 
     protected $casts = [
-        'employer_id' => 'integer'
+        'employer_id' => 'integer',
+        'category_id' => 'integer'
     ];
 
 
@@ -33,11 +34,16 @@ class Advertisement extends Model
         return $this->belongsTo(Employer::class);
     }
 
-    public function tags(): BelongsToMany
+    public function category(): BelongsTo
     {
-        return $this->belongsToMany(Tag::class, 'advertisement_tag')
-                    ->using(AdvertisementTag::class)
-                    ->withTimestamps();
+        return $this->belongsTo(Category::class);
     }
+
+    /*  public function tags(): BelongsToMany
+      {
+          return $this->belongsToMany(Tag::class, 'advertisement_tag')
+                      ->using(AdvertisementTag::class)
+                      ->withTimestamps();
+      }*/
 
 }

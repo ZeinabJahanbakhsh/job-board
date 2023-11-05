@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
-class Tag extends Model
+class Category extends Model
 {
     use HasFactory;
 
@@ -22,7 +22,7 @@ class Tag extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function advertisements(): BelongsToMany
+  /*  public function advertisements(): BelongsToMany
     {
         return $this->belongsToMany(Advertisement::class, 'advertisement_tag')
                     ->using(AdvertisementTag::class)
@@ -30,6 +30,6 @@ class Tag extends Model
                         'tags' => 'null',
                     ])
                     ->withTimestamps();
-    }
+    }*/
 
 }

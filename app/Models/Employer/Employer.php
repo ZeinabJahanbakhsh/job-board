@@ -26,7 +26,7 @@ class Employer extends Model
 
     public function advertisements(): HasMany
     {
-        return $this->hasMany(Advertisement::class);
+        return $this->hasMany(Advertisement::class, 'employer_id');
     }
 
 

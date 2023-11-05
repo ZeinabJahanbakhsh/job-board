@@ -18,15 +18,15 @@ class RoleTableSeeder extends Seeder
         $data = collect([
             [
                 'name' => 'employer',
-                'code' => 'EMPLOYER'
+                'code' => 'employer'
             ],
             [
                 'name' => 'candidate',
-                'code' => 'CANDIDATE'
+                'code' => 'candidate'
             ],
             [
                 'name' => 'admin',
-                'code' => 'ADMIN'
+                'code' => 'admin'
             ]
         ]);
 

@@ -4,14 +4,11 @@ namespace Database\Seeders;
 
 use App\Models\AdvertisementCandidate;
 use App\Models\Candidate\Candidate;
-use App\Models\CandidateEmployer;
 use App\Models\Employer\Advertisement;
 use App\Models\Employer\AdvertisementTag;
+use App\Models\Employer\Category;
 use App\Models\Employer\Employer;
-use App\Models\Employer\Tag;
 use App\Models\User;
-use Database\Seeders\Candidate\CandidateTableSeeder;
-use Database\Seeders\Employer\EmployerTableSeeder;
 use Database\Seeders\Permission\PermissionTableSeeder;
 use Database\Seeders\Role\RoleTableSeeder;
 use DB;
@@ -39,8 +36,8 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->truncate();
         User::factory('20')->create();
 
-        DB::table('tags')->truncate();
-        Tag::factory(30)->create();
+        DB::table('categories')->truncate();
+        Category::factory(30)->create();
 
         DB::table('advertisements')->truncate();
         Advertisement::factory(30)->create();
@@ -48,9 +45,8 @@ class DatabaseSeeder extends Seeder
         DB::table('advertisement_candidate')->truncate();
         AdvertisementCandidate::factory(30)->create();
 
-        DB::table('advertisement_tag')->truncate();
-        AdvertisementTag::factory(20)->create();
-
+        DB::table('permissions')->truncate();
+        DB::table('roles')->truncate();
 
         $this->call([
             UserTableSeeder::class,
