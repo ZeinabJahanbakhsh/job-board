@@ -26,7 +26,6 @@
                         Information {{ $advertisementData->title }}
                     </div>
 
-
                     <!-- Main content -->
                     <div class="card">
                         <div class="card-body table-responsive ">
@@ -37,7 +36,7 @@
 
                                 <tr>
                                     <td class="col-3">Description:</td>
-                                    <td>{{ $advertisementData->description }}</td>
+                                    <td>{!! $advertisementData->description !!}</td>
                                 </tr>
 
 
@@ -75,14 +74,12 @@
                                 </tr>
 
                                 <tr>
-                                    <td class="col-3">Tags:</td>
+                                    <td class="col-3">Category:</td>
                                     <td>
-                                        @if( $advertisementData->tags->isNotEmpty())
-                                            @foreach($advertisementData->tags as $tag)
-                                                <button class="btn bg-indigo btn-sm" style="margin: 2px" type="submit">
-                                                    {{ $tag->name }}
-                                                </button>
-                                            @endforeach
+                                        @if( $advertisementData->category())
+                                            <button class="btn bg-indigo btn-sm" style="margin: 2px" type="submit">
+                                                {{  $advertisementData->category->name }}
+                                            </button>
                                         @else
                                             {{ __('') }}
                                         @endif
@@ -94,15 +91,24 @@
 
                             </table>
 
-                            <div class="my-4">
-                                <a class="btn btn-success text-white float-right px-5 py-2" href="#" role="button">
-                                    <i class="fas fa-upload"></i>
-                                    &nbsp;
-                                    Send Resume
-                                </a>
-                            </div>
+                            @if(Auth::user())
+                                @if(Auth::user()->roles()->get()->isNotEmpty())
+                                    @if(Auth::user()->roles()->candidateRole()->get()->isNotEmpty())
+                                        <div class="my-4">
+                                            <a class="btn btn-success text-white float-right px-5 py-2" href="#"
+                                               role="button">
+                                                <i class="fas fa-upload"></i>
+                                                &nbsp;
+                                                Send Resume
+                                            </a>
+                                        </div>
+                                    @endif
+                                @endif
+                            @endif
+
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

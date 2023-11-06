@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Candidate\CandidateController;
+use App\Http\Controllers\Admin\Employer\AdvertisementController;
 use App\Http\Controllers\Admin\Employer\EmployerController;
 use App\Http\Controllers\Auth\Socialite\SocialiteController;
 use App\Http\Controllers\JobAdvertisement\ListAdvertisementController;
@@ -58,8 +59,18 @@ Route::get('/auth/{provider}/callback', [SocialiteController::class, 'callback']
 | Employer
 |--------------------------------------------------------------------------
 */
-Route::resource('employers', EmployerController::class)
-     ->middleware(['auth', 'is_employer']);
+
+Route::controller(AdvertisementController::class)
+     ->prefix('employers/{employer}/advertisements')
+     ->middleware(['auth', 'is_employer'])
+     ->group(function () {
+         Route::get('/', 'index')->name('all-advertisements');                                               //show all employer's advertisements
+         Route::get('/create', 'create')->name('create-advertisement');                                      //show create form
+         Route::post('/', 'store')->name('store-advertisement');                                             // create form
+         Route::get('/{advertisement}', 'edit')->name('edit-advertisement');                                 //update a employer's advertisement
+         Route::put('/{advertisement}', 'update')->name('update-advertisement');                             //update a employer's advertisement
+         Route::delete('/{advertisement}', 'destroy')->name('destroy-advertisement');                        //update a employer's advertisement
+     });
 
 
 /*

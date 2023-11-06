@@ -50,9 +50,10 @@
             @endcan
 
             <!--Employer-->
+            <!--Add Advertisement-->
             @can('access-employer-menu')
                 <li class="nav-item">
-                    <a href="{{ route('employers.create') }}" class="nav-link">
+                    <a href="{{ route('create-advertisement', Auth::user()->employer_id) }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             {{ __('Add Advertisement') }}
@@ -62,7 +63,7 @@
 
                 <!--Your Advertisement-->
                 <li class="nav-item">
-                    <a href="{{ route('employers.create') }}" class="nav-link">
+                    <a href="{{route('all-advertisements', Auth::user()->employer_id)}}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             {{ __('Your Advertisements') }}
@@ -72,7 +73,7 @@
 
                 <!--Received Resumes-->
                 <li class="nav-item">
-                    <a href="{{ route('employers.create') }}" class="nav-link">
+                    <a href="" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             {{ __('Received Resumes') }}

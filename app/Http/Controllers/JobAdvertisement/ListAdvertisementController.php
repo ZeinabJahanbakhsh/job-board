@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\JobAdvertisement;
 
-use App\Enums\RoleEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Employer\Advertisement;
-use App\Models\Employer\Employer;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -16,7 +14,7 @@ class ListAdvertisementController extends Controller
     public function index(): Application|Factory|View
     {
         $allAdvertisements = Advertisement::with([
-            'tags',
+            'category',
             'employer'
         ])
                                           ->orderBy('id', 'DESC')
@@ -29,7 +27,7 @@ class ListAdvertisementController extends Controller
     {
         $advertisementData = $advertisement->load([
             'employer',
-            'tags'
+            'category'
         ]);
 
         return view('job-advertisements.show-advertisement', compact('advertisementData'));

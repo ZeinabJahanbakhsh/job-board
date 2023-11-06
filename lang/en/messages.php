@@ -2,7 +2,11 @@
 
 return [
     'success' => [
-        'store' => 'Inserted successfully!',
-        'edit'  => 'Updated successfully!'
+        'store' => 'Inserted Successfully!',
+        'edit'  => 'Updated Successfully!'
+    ],
+    'failed'  => [
+        'operation' => 'Operation Failed!'
     ]
+
 ];

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('employer_id')->constrained();
             $table->foreignId('category_id')->constrained();
             $table->string('title', '150');
-            $table->string('description', '3000');
+            $table->string('description', '10000');
             $table->timestamps();
         });
     }

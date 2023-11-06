@@ -47,22 +47,17 @@
 
                                         <td>{{ $advertisement->title}}</td>
 
-                                        <td> {{ Str::limit($advertisement->description, 100) }} </td>
+                                        <td> {!! Str::limit($advertisement->description, 100); !!} </td>
 
                                         <td>
                                              <span class="label label-success">
-                                         {{--<a class="btn bg-indigo btn-sm" href="#" role="button">Laravel</a>--}}
-                                                 {{--<button class="btn bg-indigo btn-sm" style="margin: 2px" type="submit">php</button>--}}
-                                                 @if($advertisement->tags->isNotEmpty())
-                                                     @foreach($advertisement->tags as $tag)
-                                                         <button class="btn bg-indigo btn-sm" style="margin: 1px" type="submit">
-                                                    {{ $tag->name }}
-                                            </button>
-                                                     @endforeach
+                                                 @if($advertisement->category())
+                                                     <button class="btn bg-indigo btn-sm" style="margin: 1px" type="submit">
+                                                         {{$advertisement->category->name}}
+                                                         </button>
                                                  @else
                                                      {{ __('') }}
                                                  @endif
-
                                            </span>
                                         </td>
 
@@ -82,6 +77,7 @@
 
                                 @endforeach
                                 </tbody>
+
                             </table>
                         </div>
 
