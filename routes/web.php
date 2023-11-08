@@ -78,5 +78,13 @@ Route::controller(AdvertisementController::class)
 | Candidate
 |--------------------------------------------------------------------------
 */
-Route::resource('candidates', CandidateController::class)->except(['destroy', 'index'])
-     ->middleware(['auth', 'is_candidate']);
+Route::middleware(['auth', 'is_candidate'])->controller(CandidateController::class)
+     ->group(function () {
+        Route::post('/advertisements/{advertisement}/send-resume', 'sendResume')
+             ->name('send-resume');
+        Route::post('candidate/{candidate}/advertisements/{advertisement}/store-resume', 'storeResume')
+             ->name('store-resume');
+        Route::get('candidate/{candidate}/all-resumes', 'get')
+            ->name('all-resumes');
+
+    });

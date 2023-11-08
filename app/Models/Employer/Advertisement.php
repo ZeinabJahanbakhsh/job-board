@@ -2,6 +2,8 @@
 
 namespace App\Models\Employer;
 
+use App\Models\AdvertisementCandidate;
+use App\Models\Candidate\Candidate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -39,11 +41,11 @@ class Advertisement extends Model
         return $this->belongsTo(Category::class);
     }
 
-    /*  public function tags(): BelongsToMany
+      public function candidates(): BelongsToMany
       {
-          return $this->belongsToMany(Tag::class, 'advertisement_tag')
-                      ->using(AdvertisementTag::class)
+          return $this->belongsToMany(Candidate::class, 'advertisement_candidate')
+                      ->using(AdvertisementCandidate::class)
                       ->withTimestamps();
-      }*/
+      }
 
 }

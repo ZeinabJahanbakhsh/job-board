@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- Content Header (Page header) -->
-    <div class="content-header">
+    <div class="content-header" xmlns="http://www.w3.org/1999/html">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
@@ -94,14 +94,26 @@
                             @if(Auth::user())
                                 @if(Auth::user()->roles()->get()->isNotEmpty())
                                     @if(Auth::user()->roles()->candidateRole()->get()->isNotEmpty())
-                                        <div class="my-4">
-                                            <a class="btn btn-success text-white float-right px-5 py-2" href="#"
-                                               role="button">
-                                                <i class="fas fa-upload"></i>
-                                                &nbsp;
-                                                Send Resume
-                                            </a>
-                                        </div>
+
+                                        {{-- <input
+                                             class="btn btn-success text-white float-right px-5 py-2"
+                                              name="logo" type="file" value=" Send Resume">
+
+                                         @error('logo')
+                                         <div class="alert alert-danger text-red-600 mt-1 mb-1">{{ $message }}</div>
+                                         @enderror--}}
+
+                                        <form action="{{ route('send-resume' , $advertisementData->id) }}" method="POST"
+                                              enctype="multipart/form-data">
+                                            @csrf
+                                            <button type="submit"
+                                                    class="btn btn-success text-white float-right px-5 py-2"
+                                                    onclick="return confirm({{ __('Are you sure?') }})"
+                                                    value=" Send Resume"/>
+                                            <i class="fas fa-upload"></i>
+                                            &nbsp;
+                                            Send Resume
+                                        </form>
                                     @endif
                                 @endif
                             @endif

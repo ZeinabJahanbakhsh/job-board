@@ -4,85 +4,76 @@ namespace App\Http\Controllers\Admin\Candidate;
 
 use App\Http\Controllers\Controller;
 use App\Models\Candidate\Candidate;
+use App\Models\Employer\Advertisement;
 use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\File;
 
 
 class CandidateController extends Controller
 {
-    public function create(): Application|Factory|View
+    public function sendResume(Request $request): Application|Factory|View
     {
-        return view('candidates.create');
+        return view('candidates.send-resume');
     }
 
-    public function store(Request $request)
+
+    public function storeResume(Request $request, Candidate $candidate, Advertisement $advertisement): Application|Factory|View
     {
-        $this->getValidate($request);
+        /*$request->validate([
+            'pc-file' => 'required|mimes:pdf'
+        ]);*/
 
-        $data = Candidate::forceCreate([
-            'first_name' => $request->input('first_name'),
-            'last_name'  => $request->input('last_name'),
-            'email'      => $request->input('email'),
-            'mobile'     => $request->input('mobile'),
-            'file'       => $request->input('file'),
-        ]);
+        //check resume sent or not!
+        $advertisementIds = [];
+        foreach ($candidate->advertisements as $value) {
+            $advertisementIds[] = $value->pivot->advertisement_id;
+            //array_push($advertisementIds, $value->pivot->advertisement_id) ;
+        }
 
-        User::forceCreate([
-            'name'         => $request->input('first_name') . ' ' . $request->input('last_name'),
-            'email'        => $request->input('email'),
-            'candidate_id' => $data['id'],
-            'employer_id'  => null,
-            'password'     => bcrypt('123456'),
-        ]);
+        if (in_array($advertisement->id, $advertisementIds, TRUE)) {
+            return view('candidates.send-resume', ['status' => __('messages.failed.send-resume')]);
+        }
 
-        return redirect()
-            ->route('candidates . show', $data)
-            ->with('success', __('messages . success . store'));
+        //Insert resume
 
+        //*** Upload resume from ur pc!
+        if ($request->file('pc-file')) {
+            $fileName = time() . '.' . $request->file('pc-file')->extension();
+            $path     = $request->file('pc-file')->storeAs('uploads-cv', $fileName);     //storage/app/uploads-cv/file.png
+
+            $candidate->forceFill([
+                'file' => '/storage/' . $path
+            ])->save();
+
+            $candidate->advertisements()->attach($advertisement->id);
+        }
+
+        //*** Upload resume from ur dashboard
+        if ($request->input('dashboard-file')) {
+            $candidate->advertisements()->attach($advertisement->id);
+        }
+
+        $submittedResumes = $this->submittedResumes($candidate);
+        return view('candidates.all-resumes', compact('submittedResumes'));
     }
 
-    public function show(Candidate $candidate): Application|Factory|View
+    public function get(Candidate $candidate): Application|Factory|View
     {
-        return view('candidates . s how', compact('candidate'));
+        $submittedResumes = $this->submittedResumes($candidate);
+        return view('candidates.all-resumes', compact('submittedResumes'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function submittedResumes(Candidate $candidate): array|\Illuminate\Pagination\LengthAwarePaginator|\Illuminate\Contracts\Pagination\LengthAwarePaginator|\LaravelIdea\Helper\App\Models\Employer\_IH_Advertisement_C
     {
-        //
+        return $candidate->advertisements()
+                         ->with(['employer'])
+                         ->paginate('10', ['*'], 'page');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function getValidate(Request $request, $model = null): array
-    {
-        return $this->validate($request, [
-            'first_name' => ['required', 'string', 'max:20'],
-            'last_name'  => ['required', 'string', 'max:50'],
-            'email'      => ['required', 'email', Rule::unique('candidates')->ignore($model)],
-            'mobile'     => ['required', 'numeric'],
-            //'file'       => ['required', \File::type('pdf')]
-        ]);
-    }
 
 }

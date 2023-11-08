@@ -2,8 +2,12 @@
 
 namespace App\Models\Candidate;
 
+use App\Models\AdvertisementCandidate;
+use App\Models\Employer\Advertisement;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 
 class Candidate extends Model
 {
@@ -16,6 +20,22 @@ class Candidate extends Model
         'mobile',
         'file',
     ];
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Relations
+    |--------------------------------------------------------------------------
+    */
+    public function advertisements(): BelongsToMany
+    {
+        return $this->belongsToMany(Advertisement::class, 'advertisement_candidate')
+            ->using(AdvertisementCandidate::class)
+            ->withTimestamps();
+    }
+
+
 
 
     /*

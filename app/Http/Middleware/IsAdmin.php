@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class IsAdmin
 {
-    public function handle(Request $request, Closure $next): RedirectResponse
+    public function handle(Request $request, Closure $next): mixed
     {
         if (auth()->user()->roles()->adminRole()->get()->isNotEmpty()) {
             return $next($request);

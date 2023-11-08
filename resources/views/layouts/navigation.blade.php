@@ -40,10 +40,10 @@
             <!--Candidate-->
             @can('access-candidate-menu')
                 <li class="nav-item">
-                     <a href="{{ route('candidates.create') }}" class="nav-link">
+                     <a href="{{ route('all-resumes', Auth::user()->candidate_id) }}" class="nav-link">
                          <i class="nav-icon fas fa-th"></i>
                          <p>
-                             {{ __('Sent Resumes') }}
+                             {{ __('Submitted Resumes') }}
                          </p>
                      </a>
                  </li>
