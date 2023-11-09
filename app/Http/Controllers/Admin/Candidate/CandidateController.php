@@ -25,7 +25,7 @@ class CandidateController extends Controller
     public function storeResume(Request $request, Candidate $candidate, Advertisement $advertisement): Application|Factory|View
     {
         /*$request->validate([
-            'pc-file' => 'required|mimes:pdf'
+            'pc-file' =>'required|mimes:pdf|max:1024',
         ]);*/
 
         //check resume sent or not!
@@ -44,7 +44,7 @@ class CandidateController extends Controller
         //*** Upload resume from ur pc!
         if ($request->file('pc-file')) {
             $fileName = time() . '.' . $request->file('pc-file')->extension();
-            $path     = $request->file('pc-file')->storeAs('uploads-cv', $fileName);     //storage/app/uploads-cv/file.png
+            $path     = $request->file('pc-file')->storeAs('uploads-cv', $fileName);   //storage/app/uploads-cv/file.png
 
             $candidate->forceFill([
                 'file' => '/storage/' . $path

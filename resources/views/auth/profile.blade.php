@@ -20,7 +20,7 @@
                 <div class="col-lg-6">
                     <div class="card">
 
-                        <form action="{{ route('profile.update') }}" method="POST">
+                        <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -57,6 +57,22 @@
                                     </span>
                                     @enderror
                                 </div>
+
+                                <div class="input-group mb-3">
+                                    <input type="file" name="file" id="file" class="form-control @error('file') is-invalid @enderror"
+                                           placeholder="{{ __('Resume') }}" value="{{ old('file', auth()->user()->candidate->file) }}" required>
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">
+                                            <span class="fas fa-file"></span>
+                                        </div>
+                                    </div>
+                                    @error('file')
+                                    <span class="error invalid-feedback">
+                                        {{ $message }}
+                                    </span>
+                                    @enderror
+                                </div>
+
 
                                 <div class="input-group mb-3">
                                     <input type="password" name="password"

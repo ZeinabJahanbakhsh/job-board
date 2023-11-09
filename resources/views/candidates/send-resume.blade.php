@@ -29,6 +29,7 @@
 
                         <form action="{{ route('store-resume', [Auth::user()->candidate_id, Request::route('advertisement')]) }}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
+                            @method('POST')
 
                             <div class="card-body">
 
