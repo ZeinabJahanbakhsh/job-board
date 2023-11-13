@@ -3,20 +3,26 @@
 namespace App\Http\Controllers\Admin\Employer;
 
 use App\Http\Controllers\Controller;
+use App\Models\AdvertisementCandidate;
+use App\Models\Candidate\Candidate;
 use App\Models\Employer\Advertisement;
 use App\Models\Employer\Category;
 use App\Models\Employer\Employer;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Storage;
+use Response;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 
-class AdvertisementController extends Controller
+class EmployerAdvertisementController extends Controller
 {
-    public function index(Employer $employer):  Application|Factory|View
+    public function index(Employer $employer): Application|Factory|View
     {
         $advertisementsOfEmployer = $employer->advertisements()
                                              ->with('category')
@@ -92,6 +98,17 @@ class AdvertisementController extends Controller
         return redirect()->route('all-advertisements', $employer);
     }
 
+    public function get(Employer $employer): Application|Factory|View
+    {
+        $allReceivedCandidateResumes = $employer->candidates()->paginate('10', ['*'], 'page');
+        return view('employer.received-resumes', compact('allReceivedCandidateResumes'));
+    }
+
+    public function showPdfFile($candidate): BinaryFileResponse
+    {
+        $candidate = Candidate::query()->findOrFail($candidate);
+        return response()->download(storage_path('app/' . $candidate->file));
+    }
 
 
 }

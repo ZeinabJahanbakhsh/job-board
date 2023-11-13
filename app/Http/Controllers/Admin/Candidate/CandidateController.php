@@ -22,7 +22,7 @@ class CandidateController extends Controller
     }
 
 
-    public function storeResume(Request $request, Candidate $candidate, Advertisement $advertisement): Application|Factory|View
+    public function storeResume(Request $request, Candidate $candidate, Advertisement $advertisement)
     {
         /*$request->validate([
             'pc-file' =>'required|mimes:pdf|max:1024',
@@ -39,7 +39,8 @@ class CandidateController extends Controller
             return view('candidates.send-resume', ['status' => __('messages.failed.send-resume')]);
         }
 
-        //Insert resume
+
+        //***Insert resume
 
         //*** Upload resume from ur pc!
         if ($request->file('pc-file')) {
@@ -57,6 +58,9 @@ class CandidateController extends Controller
         if ($request->input('dashboard-file')) {
             $candidate->advertisements()->attach($advertisement->id);
         }
+
+        //candidate_employer
+        $candidate->employers()->attach($advertisement->employer->id);
 
         $submittedResumes = $this->submittedResumes($candidate);
         return view('candidates.all-resumes', compact('submittedResumes'));

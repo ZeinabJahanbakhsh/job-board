@@ -73,7 +73,7 @@
 
                 <!--Received Resumes-->
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('received-resumes', Auth::user()->employer_id) }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             {{ __('Received Resumes') }}

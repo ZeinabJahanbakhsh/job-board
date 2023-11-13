@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Candidate\CandidateController;
-use App\Http\Controllers\Admin\Employer\AdvertisementController;
+use App\Http\Controllers\Admin\Employer\EmployerAdvertisementController;
 use App\Http\Controllers\Admin\Employer\EmployerController;
 use App\Http\Controllers\Auth\Socialite\SocialiteController;
 use App\Http\Controllers\JobAdvertisement\ListAdvertisementController;
@@ -60,18 +60,26 @@ Route::get('/auth/{provider}/callback', [SocialiteController::class, 'callback']
 |--------------------------------------------------------------------------
 */
 
-Route::controller(AdvertisementController::class)
-     ->prefix('employers/{employer}/advertisements')
+Route::controller(EmployerAdvertisementController::class)
      ->middleware(['auth', 'is_employer'])
      ->group(function () {
-         Route::get('/', 'index')->name('all-advertisements');                                               //show all employer's advertisements
-         Route::get('/create', 'create')->name('create-advertisement');                                      //show create form
-         Route::post('/', 'store')->name('store-advertisement');                                             // create form
-         Route::get('/{advertisement}', 'edit')->name('edit-advertisement');                                 //update a employer's advertisement
-         Route::put('/{advertisement}', 'update')->name('update-advertisement');                             //update a employer's advertisement
-         Route::delete('/{advertisement}', 'destroy')->name('destroy-advertisement');                        //update a employer's advertisement
+         Route::prefix('employers/{employer}/advertisements')
+              ->group(function () {
+                  Route::get('/', 'index')->name('all-advertisements');
+                  Route::get('/create', 'create')->name('create-advertisement');
+                  Route::post('/', 'store')->name('store-advertisement');
+                  Route::get('/{advertisement}', 'edit')->name('edit-advertisement');
+                  Route::put('/{advertisement}', 'update')->name('update-advertisement');
+                  Route::delete('/{advertisement}', 'destroy')->name('destroy-advertisement');
+              });
      });
 
+Route::controller(EmployerAdvertisementController::class)
+     ->middleware(['auth', 'is_employer'])
+     ->group(function () {
+         Route::get('employers/{employer}/received-resumes', 'get')->name('received-resumes');
+         Route::get('employers/{file}', 'showPdfFile')->name('show-resume');
+     });
 
 /*
 |--------------------------------------------------------------------------
@@ -80,11 +88,11 @@ Route::controller(AdvertisementController::class)
 */
 Route::middleware(['auth', 'is_candidate'])->controller(CandidateController::class)
      ->group(function () {
-        Route::post('/advertisements/{advertisement}/send-resume', 'sendResume')
-             ->name('send-resume');
-        Route::post('candidate/{candidate}/advertisements/{advertisement}/store-resume', 'storeResume')
-             ->name('store-resume');
-        Route::get('candidate/{candidate}/all-resumes', 'get')
-            ->name('all-resumes');
+         Route::post('/advertisements/{advertisement}/send-resume', 'sendResume')
+              ->name('send-resume');
+         Route::post('candidate/{candidate}/advertisements/{advertisement}/store-resume', 'storeResume')
+              ->name('store-resume');
+         Route::get('candidate/{candidate}/all-resumes', 'get')
+              ->name('all-resumes');
 
-    });
+     });
