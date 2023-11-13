@@ -30,7 +30,7 @@
             <!--List Advertisements-->
             <li class="nav-item">
                 <a href="{{ route('list-advertisements') }}" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
+                    <i class="nav-icon fas fa-list"></i>
                     <p>
                         {{ __('List Advertisements') }}
                     </p>
@@ -41,7 +41,7 @@
             @can('access-candidate-menu')
                 <li class="nav-item">
                      <a href="{{ route('all-resumes', Auth::user()->candidate_id) }}" class="nav-link">
-                         <i class="nav-icon fas fa-th"></i>
+                         <i class="nav-icon fas fa-upload"></i>
                          <p>
                              {{ __('Submitted Resumes') }}
                          </p>
@@ -54,7 +54,7 @@
             @can('access-employer-menu')
                 <li class="nav-item">
                     <a href="{{ route('create-advertisement', Auth::user()->employer_id) }}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="nav-icon fas fa-arrow-up"></i>
                         <p>
                             {{ __('Add Advertisement') }}
                         </p>
@@ -64,7 +64,7 @@
                 <!--Your Advertisement-->
                 <li class="nav-item">
                     <a href="{{route('all-advertisements', Auth::user()->employer_id)}}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="nav-icon fas fa-clipboard-list"></i>
                         <p>
                             {{ __('Your Advertisements') }}
                         </p>
@@ -74,7 +74,7 @@
                 <!--Received Resumes-->
                 <li class="nav-item">
                     <a href="{{ route('received-resumes', Auth::user()->employer_id) }}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                        <i class="nav-icon fas fa-arrow-down"></i>
                         <p>
                             {{ __('Received Resumes') }}
                         </p>
@@ -93,35 +93,6 @@
                     </a>
                 </li>
             @endcan
-
-            <!--About Us-->
-            {{--<li class="nav-item">
-                <a href="{{ route('about') }}" class="nav-link">
-                    <i class="nav-icon far fa-address-card"></i>
-                    <p>
-                        {{ __('About us') }}
-                    </p>
-                </a>
-            </li>--}}
-
-            <!--Two Level Menu-->
-            {{--<li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-circle nav-icon"></i>
-                    <p>
-                        Two-level menu
-                        <i class="fas fa-angle-left right"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview" style="display: none;">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Child menu</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>--}}
 
         </ul>
     </nav>
