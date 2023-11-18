@@ -24,6 +24,25 @@
                         <div class="card-header alert alert-info">
                             <h3 class="card-title">Received Resume</h3>
                         </div>
+                        <style>
+                            .hide {
+                                display: none;
+                            }
+
+                            .show {
+                                display: block;
+                            }
+                        </style>
+
+                        <select name="condition" class="form-control" id="select-condition" required>
+                            <option>{{old('condition')}}</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+
+                        <label class="hide p-2" for="function" id="label1">function One</label>
+                        <label class="hide p-2" for="function" id="label2">function Two</label>
+
 
                         <div class="card-body">
                             <table class="table table-bordered table-hover">
@@ -78,3 +97,20 @@
 @stop
 
 
+@section('scripts')
+    <script>
+        $( "#select-condition" ).change(function() {
+            if(this.value === 'yes'){
+                $('#label1').removeClass( "hide" );
+                $('#label2').addClass( "hide" );
+            }else if(this.value === 'no'){
+                $('#label1').addClass( "hide" );
+                $('#label2').removeClass( "hide" );
+            }
+            else{
+                $('#label1').removeClass( "show" ).addClass("hide");
+                $('#label2').removeClass( "show" ).addClass("hide");
+            }
+        });
+    </script>
+@endsection

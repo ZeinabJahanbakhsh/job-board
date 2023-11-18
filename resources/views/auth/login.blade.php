@@ -2,7 +2,36 @@
 
 @section('content')
     <div class="card-body login-card-body">
-        <p class="login-box-msg">{{ __('Login') }}</p>
+
+        <!-- Github/Google -->
+        <div class="text-center">
+            <h1 class="text-lg">
+                Login with
+            </h1>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <a class="btn text-white text-center btn-block" href="auth/github/redirect" style="background-color: #333333;" role="button">
+                    <i class="fab fa-github"></i>
+                    {{ __('Github') }}
+                </a>
+            </div>
+
+            <div class="col-6">
+                <a class="btn text-white text-center btn-block" style="background-color: #dd4b39;" href="/auth/google/redirect" role="button">
+                    <i class="fab fa-google"></i>
+                    {{ __('Google') }}
+                </a>
+            </div>
+        </div>
+        <!-- Github/Google -->
+
+        <!-- Login Form -->
+        <div class="text-center pt-5">
+            <h1 class="text-lg">
+                {{ __('Login with credentials') }}
+            </h1>
+        </div>
 
         <form action="{{ route('login') }}" method="post">
             @csrf
@@ -36,7 +65,7 @@
             </div>
 
             <div class="row">
-                <div class="col-8">
+                <div class="col-6">
                     <div class="icheck-primary">
                         <input type="checkbox" id="remember" name="remember">
                         <label for="remember">
@@ -45,7 +74,7 @@
                     </div>
                 </div>
                 <!-- /.col -->
-                <div class="col-4">
+                <div class="col-6">
                     <button type="submit" class="btn btn-primary btn-block">{{ __('Login') }}</button>
                 </div>
 
@@ -58,25 +87,17 @@
                 <a href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
             </p>
         @endif
+        <!-- Login Form -->
 
-        <!-- Github/Google -->
+        <!-- Register -->
         <div class="row">
-
-            <div class="col-6">
-                <a class="btn text-white text-center btn-block" href="auth/github/redirect" style="background-color: #333333;" role="button">
-                    <i class="fab fa-github"></i>
-                    {{ __('Github') }}
+            <div class="col-12 pt-5">
+                <a class="btn text-white text-center btn-block btn-success" href="{{ route('register') }}" role="button">
+                    {{ __('Create Account') }}
                 </a>
             </div>
-
-            <div class="col-6">
-                <a class="btn text-white text-center btn-block" style="background-color: #dd4b39;" href="/auth/google/redirect" role="button">
-                    <i class="fab fa-google"></i>
-                    {{ __('Google') }}
-                </a>
-            </div>
-
         </div>
+        <!-- Register -->
 
     </div>
     <!-- /.login-card-body -->

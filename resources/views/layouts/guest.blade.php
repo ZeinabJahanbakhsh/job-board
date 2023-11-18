@@ -26,11 +26,14 @@
     </div>
 </div>
 <!-- /.login-box -->
-
 @vite('resources/js/app.js')
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
 <!-- Bootstrap 4 -->
 <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+
 <!-- AdminLTE App -->
 <script src="{{ asset('js/adminlte.min.js') }}" defer></script>
+@yield('scripts')
 </body>
 </html>
