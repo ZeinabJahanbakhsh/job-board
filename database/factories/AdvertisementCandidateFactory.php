@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\AdvertisementCandidate;
 use App\Models\Candidate\Candidate;
+use App\Models\Employer\Advertisement;
 use App\Models\Employer\Employer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -11,16 +13,15 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class AdvertisementCandidateFactory extends Factory
 {
+
     /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
+     * @return AdvertisementCandidate|array
      */
-    public function definition(): array
+    public function definition(): array|AdvertisementCandidate
     {
         return [
             'candidate_id'     => Candidate::all()->random('1')->value('id'),
-            'advertisement_id' => Employer::all()->random('1')->value('id'),
+            'advertisement_id' => Advertisement::all()->random('1')->value('id'),
         ];
     }
 

@@ -2,11 +2,11 @@
 
 namespace Database\Seeders\Role;
 
-use App\Models\Role\Role;
+use App\Models\Role\RoleUser;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class RoleTableSeeder extends Seeder
+class RoleUserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,27 +17,25 @@ class RoleTableSeeder extends Seeder
     {
         $data = collect([
             [
-                'name' => 'admin',
-                'code' => 'admin'
+                'user_id' => 1,
+                'role_id' => 1
             ],
             [
-                'name' => 'employer',
-                'code' => 'employer'
+                'user_id' => 2,
+                'role_id' => 2
             ],
             [
-                'name' => 'candidate',
-                'code' => 'candidate'
-            ]
+                'user_id' => 3,
+                'role_id' => 3
+            ],
         ]);
 
         $data->each(function ($value) {
-            Role::create([
-                'name' => $value['name'],
-                'code' => $value['code']
+            RoleUser::create([
+                'user_id' => $value['user_id'],
+                'role_id' => $value['role_id']
             ]);
         });
-
     }
-
 
 }

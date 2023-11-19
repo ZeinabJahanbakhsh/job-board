@@ -18,108 +18,37 @@ class UserTableSeeder extends Seeder
      */
     public function run(): void
     {
-
-
-
-        $administrator = collect([
-            'name'              => "administrator",
-            'email'             => "admin@admin.com",
-            'employer_id'       => null,
-            'candidate_id'      => null,
-            'email_verified_at' => now(),
-            'password'          => bcrypt('123456'),
-            'remember_token'    => Str::random(10),
+        $data = collect([
+            [
+                'name'              => "administrator",
+                'email'             => "admin@admin.com",
+                'employer_id'       => null,
+                'candidate_id'      => null,
+                'email_verified_at' => now(),
+                'password'          => bcrypt('123456'),
+                'remember_token'    => Str::random(10),
+            ],
+            [
+                'name'              => "employer",
+                'email'             => "employer@employer.com",
+                'employer_id'       => 1,
+                'candidate_id'      => null,
+                'email_verified_at' => now(),
+                'password'          => bcrypt('123456'),
+                'remember_token'    => Str::random(10),
+            ],
+            [
+                'name'              => "candidate",
+                'email'             => "candidate@candidate.com",
+                'employer_id'       => null,
+                'candidate_id'      => 1,
+                'email_verified_at' => now(),
+                'password'          => bcrypt('123456'),
+                'remember_token'    => Str::random(10),
+            ],
         ]);
 
-        /*
-                $data = collect([
-                    [
-                        'name'              => "administrator",
-                        'email'             => "admin@admin.com",
-                        'employer_id'       => null,
-                        'candidate_id'      => null,
-                        'email_verified_at' => now(),
-                        'password'          => bcrypt('123456'),
-                        'remember_token'    => Str::random(10),
-                    ],
-                    [
-                        'name'              => fake()->name(),
-                        'email'             => fake()->unique()->safeEmail(),
-                        'employer_id'       => Employer::all()->random('1')->value('id'),
-                        'candidate_id'      => null,
-                        'email_verified_at' => now(),
-                        'password'          => bcrypt('123456'),
-                        'remember_token'    => Str::random(10),
-                    ],
-                    [
-                        'name'              => fake()->name(),
-                        'email'             => fake()->unique()->safeEmail(),
-                        'employer_id'       => null,
-                        'candidate_id'      => Candidate::all()->random('1')->value('id'),
-                        'email_verified_at' => now(),
-                        'password'          => bcrypt('123456'),
-                        'remember_token'    => Str::random(10),
-                    ],
-                    [
-                        'name'              => fake()->name(),
-                        'email'             => fake()->unique()->safeEmail(),
-                        'employer_id'       => Employer::all()->random('1')->value('id'),
-                        'candidate_id'      => null,
-                        'email_verified_at' => now(),
-                        'password'          => bcrypt('123456'),
-                        'remember_token'    => Str::random(10),
-                    ],
-                    [
-                        'name'              => fake()->name(),
-                        'email'             => fake()->unique()->safeEmail(),
-                        'employer_id'       => null,
-                        'candidate_id'      => Candidate::all()->random('1')->value('id'),
-                        'email_verified_at' => now(),
-                        'password'          => bcrypt('123456'),
-                        'remember_token'    => Str::random(10),
-                    ],
-                    [
-                        'name'              => fake()->name(),
-                        'email'             => fake()->unique()->safeEmail(),
-                        'employer_id'       => null,
-                        'candidate_id'      => Candidate::all()->random('1')->value('id'),
-                        'email_verified_at' => now(),
-                        'password'          => bcrypt('123456'),
-                        'remember_token'    => Str::random(10),
-                    ],
-                    [
-                        'name'              => fake()->name(),
-                        'email'             => fake()->unique()->safeEmail(),
-                        'employer_id'       => null,
-                        'candidate_id'      => Candidate::all()->random('1')->value('id'),
-                        'email_verified_at' => now(),
-                        'password'          => bcrypt('123456'),
-                        'remember_token'    => Str::random(10),
-                    ],
-                    [
-                        'name'              => fake()->name(),
-                        'email'             => fake()->unique()->safeEmail(),
-                        'employer_id'       => Employer::all()->random('1')->value('id'),
-                        'candidate_id'      => null,
-                        'email_verified_at' => now(),
-                        'password'          => bcrypt('123456'),
-                        'remember_token'    => Str::random(10),
-                    ],
-                ]);
-        */
-
-        User::create([
-            'name'              => "administrator",
-            'email'             => "admin@admin.com",
-            'employer_id'       => null,
-            'candidate_id'      => null,
-            'email_verified_at' => now(),
-            'password'          => bcrypt('123456'),
-            'remember_token'    => Str::random(10),
-        ]);
-
-
-        /*$data->each(function ($value) {
+        $data->each(function ($value) {
             User::create([
                 'name'              => $value['name'],
                 'email'             => $value['email'],
@@ -129,7 +58,7 @@ class UserTableSeeder extends Seeder
                 'password'          => $value['password'],
                 'remember_token'    => $value['remember_token'],
             ]);
-        });*/
+        });
     }
 
 }

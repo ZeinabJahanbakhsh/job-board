@@ -58,6 +58,7 @@
                                     @enderror
                                 </div>
 
+                                @can('access-candidate-menu')
                                 <div class="input-group mb-3">
                                     <input type="file" name="file" id="file" class="form-control @error('file') is-invalid @enderror"
                                            placeholder="{{ __('Resume') }}" value="{{ old('file', auth()->user()->candidate->file) }}" required>
@@ -72,6 +73,7 @@
                                     </span>
                                     @enderror
                                 </div>
+                                @endcan
 
 
                                 <div class="input-group mb-3">
