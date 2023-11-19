@@ -5,6 +5,7 @@ In this way, the employer registers the job advertisements and the candidates se
 
 # Requirement
 - Backend: [Laravel 9.19](https://laravel.com/docs/9.x/installation)
+- Database: Mysql
 - Front and dashboard with The Larastarters: [AdminLTE3 and Laravel UI (Bootstrap) starter kit](https://github.com/LaravelDaily/Larastarters) 
 - Authentication: [Sanctum](https://laravel.com/docs/9.x/sanctum)
 - Authorization: Gate and Policy
@@ -16,7 +17,7 @@ In this way, the employer registers the job advertisements and the candidates se
 - Candidates can also register profile, upload and submit their resume.
 
 
-### How to use:
+# How to use:
 - Clone the repository with git clone
 - Copy .env.example file to .env and edit database credentials there
 - Run composer install
@@ -30,10 +31,6 @@ In this way, the employer registers the job advertisements and the candidates se
 - Employer's credentials: employer@employer.com - 123456
 - Candidate's credentials: candidate@candidate.com - 123456
 
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
 ## License
 
