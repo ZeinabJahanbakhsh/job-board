@@ -20,7 +20,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 
-class AditionalDataSeeder extends Seeder
+class AdditionalDataSeeder extends Seeder
 {
     /**
      * Run the database seeds.
