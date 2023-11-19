@@ -15,9 +15,9 @@ class AdvertisementCandidateFactory extends Factory
 {
 
     /**
-     * @return AdvertisementCandidate|array
+     * @return array
      */
-    public function definition(): array|AdvertisementCandidate
+    public function definition(): array
     {
         return [
             'candidate_id'     => Candidate::all()->random('1')->value('id'),

@@ -40,8 +40,7 @@ class UserFactory extends Factory
             'remember_token'    => Str::random(10),
         ];
 
-        //dd( array_rand($users)); //candidate
-        return $users[ array_rand($users)];
+        return $users[ array_rand($users) ];
     }
 
     /**

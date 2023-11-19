@@ -3,12 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\AdvertisementCandidate;
-use App\Models\Candidate\Candidate;
-use App\Models\CandidateEmployer;
 use App\Models\Employer\Advertisement;
 use App\Models\Employer\Category;
-use App\Models\Employer\Employer;
-use App\Models\User;
 use Database\Seeders\Candidate\CandidateTableSeeder;
 use Database\Seeders\Employer\EmployerTableSeeder;
 use Database\Seeders\Permission\PermissionTableSeeder;
@@ -16,20 +12,20 @@ use Database\Seeders\Permission\PermissionUserTableSeeder;
 use Database\Seeders\Role\RoleTableSeeder;
 use Database\Seeders\Role\RoleUserTableSeeder;
 use DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 
-
-class DatabaseSeeder extends Seeder
+class DemoDataSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run(): void
     {
-       /* Schema::disableForeignKeyConstraints();
+        Schema::disableForeignKeyConstraints();
 
         DB::table('categories')->truncate();
         Category::factory(5)->create();
@@ -60,6 +56,8 @@ class DatabaseSeeder extends Seeder
         DB::table('advertisement_candidate')->truncate();
         AdvertisementCandidate::factory(5)->create();
 
-        Schema::enableForeignKeyConstraints();*/
+        Schema::enableForeignKeyConstraints();
     }
+
+
 }
