@@ -20,7 +20,7 @@ In this way, the employer registers the job advertisements and the candidates se
 # How to use:
 - Clone the repository with git clone
 - Copy .env.example file to .env and edit database credentials there
-- Run composer install
+- Run ```composer install```
 - Run ```php artisan key:generate```
 - For run migration and seeder:
     - Run ```php artisan project:insert-demo-data``` (it can create migrations and insert demo data with 3 users: a admin, a candidate and a employer at the end run ``` php artisan optimize:clear```)
