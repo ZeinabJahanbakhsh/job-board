@@ -31,6 +31,9 @@ In this way, the employer registers the job advertisements and the candidates se
 - Employer's credentials: employer@employer.com - 123456
 - Candidate's credentials: candidate@candidate.com - 123456
 
+# A few screenshots
+![Screenshot of a login form](https://ibb.co/LNrLx4r)
+
 
 ## License
 
