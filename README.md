@@ -3,19 +3,13 @@
 Job board is a simple system that can be used by candidates and employers with their own role-permissions.
 In this way, the employer registers the job advertisements and the candidates sees all of them and chooses one and then sends its own resume to that company.
 
-# Requirement
+# Features
 - Backend: [Laravel 9.19](https://laravel.com/docs/9.x/installation)
 - Database: Mysql
 - Front and dashboard with The Larastarters: [AdminLTE3 and Laravel UI (Bootstrap) starter kit](https://github.com/LaravelDaily/Larastarters) 
 - Authentication: [Sanctum](https://laravel.com/docs/9.x/sanctum)
 - Authorization: Gate and Policy
-- Laravel Socialite: google, github 
-
-
-### Each user has a profile:
-- Employers can register in this system and create advertisements.
-- Candidates can also register profile, upload and submit their resume.
-
+- Laravel Socialite: google, github
 
 # How to use:
 - Clone the repository with git clone
