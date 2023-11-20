@@ -1,6 +1,6 @@
 # Introduction
 
-Job board is a simple system that can be used by candidates and employers with their own role-permissions.
+Job board is a simple application that can be used by candidates and employers with their own role-permissions.
 In this way, the employer registers the job advertisements and the candidates sees all of them and chooses one and then sends its own resume to that company.
 Each user has a profile:
 - Employers can register in this system and create advertisements.
