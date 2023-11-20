@@ -32,7 +32,15 @@ In this way, the employer registers the job advertisements and the candidates se
 - Candidate's credentials: candidate@candidate.com - 123456
 
 # A few screenshots
-![Screenshot of a login form](https://ibb.co/LNrLx4r)
+## Login form
+![login](https://github.com/ZeinabJahanbakhsh/job-board-larastarters/assets/18625433/69988486-6dc6-4d34-94fa-e008155768c3)
+
+## Employer dashboard
+![employer](https://github.com/ZeinabJahanbakhsh/job-board-larastarters/assets/18625433/35e304cd-e7bc-43c1-9efe-650c016a6a01)
+
+## Candidate dashboard
+![candidate](https://github.com/ZeinabJahanbakhsh/job-board-larastarters/assets/18625433/749bfac0-d920-40db-9f3b-9e2a219fc1e6)
+
 
 
 ## License
