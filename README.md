@@ -20,35 +20,35 @@ In this way, the employer registers the job advertisements and the candidates se
 # How to use:
 - Clone the repository with git clone
 - Copy .env.example file to .env and edit database credentials there
+- Run
+    ```
+  composer install
+  ```
   - Run
+  ```
+  php artisan key:generate
+  ```
+- For run migration and seeder you can choose one of them:
+    - Run below code (it can create migrations and insert demo data with 3 users: a admin, a candidate and a employer at the end run ``` php artisan optimize:clear```) 
+      ``` 
+      php artisan project:insert-demo-data
       ```
-    composer install
-    ```
-    - Run
-    ```
-    php artisan key:generate
-    ```
-  - For run migration and seeder you can choose one of them:
-      - Run below code (it can create migrations and insert demo data with 3 users: a admin, a candidate and a employer at the end run ``` php artisan optimize:clear```) 
-        ``` 
-        php artisan project:insert-demo-data
-        ```
-      - Run  below code (it can create migrations and insert demo data with a lot of records: a admin, some candidates and some employers at the end run ``` php artisan optimize:clear```)
-        ```
-        php artisan project:insert-additional-data
-        ``` 
-      - If you don't want to insert any data, it is just enough to run:
-        ``` 
-        php artisan migrate 
-        ```
-  - Done! Run
-    ```
-    php artisan serv
-    ```
-     and 
-    ```
-    npm run dev
-    ```
+    - Run  below code (it can create migrations and insert demo data with a lot of records: a admin, some candidates and some employers at the end run ``` php artisan optimize:clear```)
+      ```
+      php artisan project:insert-additional-data
+      ``` 
+    - If you don't want to insert any data, it is just enough to run:
+      ``` 
+      php artisan migrate 
+      ```
+- Done! Run
+  ```
+  php artisan serv
+  ```
+   and 
+  ```
+  npm run dev
+  ```
 - Admin's credentials: admin@admin.com - 123456
 - Employer's credentials: employer@employer.com - 123456
 - Candidate's credentials: candidate@candidate.com - 123456
