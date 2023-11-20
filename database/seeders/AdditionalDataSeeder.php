@@ -14,7 +14,9 @@ use App\Models\User;
 use Database\Seeders\Candidate\CandidateTableSeeder;
 use Database\Seeders\Employer\EmployerTableSeeder;
 use Database\Seeders\Permission\PermissionTableSeeder;
+use Database\Seeders\Permission\PermissionUserTableSeeder;
 use Database\Seeders\Role\RoleTableSeeder;
+use Database\Seeders\Role\RoleUserTableSeeder;
 use DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -32,13 +34,28 @@ class AdditionalDataSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
 
         DB::table('employers')->truncate();
-        Employer::factory(30)->create();
-
         DB::table('candidates')->truncate();
-        Candidate::factory(30)->create();
-
         DB::table('users')->truncate();
+        DB::table('permissions')->truncate();
+        DB::table('roles')->truncate();
+        DB::table('permission_user')->truncate();
+        DB::table('role_user')->truncate();
+
+        $this->call([
+            EmployerTableSeeder::class,
+            CandidateTableSeeder::class,
+            UserTableSeeder::class,
+            PermissionTableSeeder::class,
+            RoleTableSeeder::class,
+            RoleUserTableSeeder::class,
+            PermissionUserTableSeeder::class
+        ]);
+
+        Employer::factory(30)->create();
+        Candidate::factory(30)->create();
         User::factory(30)->create();
+        PermissionUser::factory(30)->create();
+        RoleUser::factory(30)->create();
 
         DB::table('candidate_employer')->truncate();
         CandidateEmployer::factory(30)->create();
@@ -51,23 +68,6 @@ class AdditionalDataSeeder extends Seeder
 
         DB::table('advertisement_candidate')->truncate();
         AdvertisementCandidate::factory(30)->create();
-
-        DB::table('permissions')->truncate();
-        DB::table('roles')->truncate();
-
-        $this->call([
-            UserTableSeeder::class,
-            EmployerTableSeeder::class,
-            CandidateTableSeeder::class,
-            PermissionTableSeeder::class,
-            RoleTableSeeder::class
-        ]);
-
-        DB::table('permission_user')->truncate();
-        PermissionUser::factory(30)->create();
-
-        DB::table('role_user')->truncate();
-        RoleUser::factory(30)->create();
 
         Schema::enableForeignKeyConstraints();
     }
