@@ -1,7 +1,7 @@
 # Introduction
 
-Job board is a simple system that can be used by candidates and employers with their own role-permissions.
-In this way, the employer registers the job advertisements and the candidates sees all of them and chooses one and then sends its own resume to that company.
+```Job board is a simple system that can be used by candidates and employers with their own role-permissions.
+In this way, the employer registers the job advertisements and the candidates sees all of them and chooses one and then sends its own resume to that company.```
 
 # Requirement
 - Backend: [Laravel 9.19](https://laravel.com/docs/9.x/installation)
