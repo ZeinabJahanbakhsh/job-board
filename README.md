@@ -25,17 +25,6 @@ Each user has a profile:
   ```
   php artisan key:generate
   ```
-  - Run below codes for installing dashboard
-  
-   ```
-   composer require laraveldaily/larastarters --dev
-  ```
-  
-  ```
-  php artisan larastarters:install
-  ```
-  
- Then choose Bootstrap and adminlte
 
   ```
   npm install
