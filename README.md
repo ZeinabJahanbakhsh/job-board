@@ -35,10 +35,10 @@ Each user has a profile:
   php artisan larastarters:install
   ```
   
- Then choose Bootstrap
+ Then choose Bootstrap and adminlte
 
   ```
-  npm install && npm run dev
+  npm install
   ```
 
 - Instead of run migrations and seeders you can choose one of my console command:
