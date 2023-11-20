@@ -62,9 +62,11 @@ Each user has a profile:
   ```
   npm run dev
   ```
+  
 - Admin's credentials: admin@admin.com - 123456
 - Employer's credentials: employer@employer.com - 123456
 - Candidate's credentials: candidate@candidate.com - 123456
+
 
 # A few screenshots
 ## Login form
