@@ -17,9 +17,9 @@ use Database\Seeders\Permission\PermissionTableSeeder;
 use Database\Seeders\Permission\PermissionUserTableSeeder;
 use Database\Seeders\Role\RoleTableSeeder;
 use Database\Seeders\Role\RoleUserTableSeeder;
-use DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class AdditionalDataSeeder extends Seeder
