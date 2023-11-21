@@ -18,21 +18,25 @@ class PermissionUserFactory extends Factory
     public function definition(): array
     {
         $permission['employer'] = [
-            'user_id'       => User::where('candidate_id', null)->get()->random('1')->value('id'),
+            'user_id'       => User::whereNull('candidate_id')
+                                   ->whereNotNull('employer_id')
+                                   ->get()
+                                   ->random('1')
+                                   ->value('id'),
             'permission_id' => 2
         ];
 
         $permission['candidate'] = [
-            'user_id'       => User::where('employer_id', null)->get()->random('1')->value('id'),
+            'user_id'       => User::whereNull('employer_id')
+                                   ->whereNotNull('candidate_id')
+                                   ->get()
+                                   ->random('1')
+                                   ->value('id'),
             'permission_id' => 3
         ];
 
         $permission['admin'] = [
-            'user_id'       => User::where('employer_id', null)
-                                   ->where('candidate_id', null)
-                                   ->get()
-                                   ->random(1)
-                                   ->value('id'),
+            'user_id'       => 1,
             'permission_id' => 1
         ];
 
