@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(ListAdvertisementController::class)->group(function () {
     Route::get('/', 'index')->name('list-advertisements');
-    Route::get('show-job/{advertisement}', [ListAdvertisementController::class, 'show'])->name('show-job');
+    Route::get('show-job/{advertisement}', 'show')->name('show-job');
 });
 
 
