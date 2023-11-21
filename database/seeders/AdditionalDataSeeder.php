@@ -35,15 +35,20 @@ class AdditionalDataSeeder extends Seeder
 
         DB::table('employers')->truncate();
         DB::table('candidates')->truncate();
+        DB::table('candidate_employer')->truncate();
         DB::table('users')->truncate();
         DB::table('permissions')->truncate();
         DB::table('roles')->truncate();
         DB::table('permission_user')->truncate();
         DB::table('role_user')->truncate();
+        DB::table('categories')->truncate();
+        DB::table('advertisements')->truncate();
+        DB::table('advertisement_candidate')->truncate();
 
         $this->call([
             EmployerTableSeeder::class,
             CandidateTableSeeder::class,
+            CandidateEmployerTableSeeder::class,
             UserTableSeeder::class,
             PermissionTableSeeder::class,
             RoleTableSeeder::class,
@@ -57,16 +62,9 @@ class AdditionalDataSeeder extends Seeder
         PermissionUser::factory(30)->create();
         RoleUser::factory(30)->create();
 
-        DB::table('candidate_employer')->truncate();
         CandidateEmployer::factory(30)->create();
-
-        DB::table('categories')->truncate();
         Category::factory(30)->create();
-
-        DB::table('advertisements')->truncate();
         Advertisement::factory(30)->create();
-
-        DB::table('advertisement_candidate')->truncate();
         AdvertisementCandidate::factory(30)->create();
 
         Schema::enableForeignKeyConstraints();

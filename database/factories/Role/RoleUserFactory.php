@@ -27,10 +27,10 @@ class RoleUserFactory extends Factory
             'role_id' => 3
         ];
 
-        $role['admin'] = [
+       /* $role['admin'] = [
             'user_id' => 1,
             'role_id' => 1
-        ];
+        ];*/
 
         return $role[array_rand($role)];
     }

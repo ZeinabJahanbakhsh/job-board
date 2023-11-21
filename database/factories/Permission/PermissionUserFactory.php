@@ -35,10 +35,10 @@ class PermissionUserFactory extends Factory
             'permission_id' => 3
         ];
 
-        $permission['admin'] = [
+      /*  $permission['admin'] = [
             'user_id'       => 1,
             'permission_id' => 1
-        ];
+        ];*/
 
         return $permission[array_rand($permission)];
     }
