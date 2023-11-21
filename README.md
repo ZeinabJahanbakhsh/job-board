@@ -31,7 +31,7 @@ Each user has a profile:
   ```
 
 - Instead of run migrations and seeders you can choose one of my console command:
-    - Run below code (it can create migrations and insert demo data with 3 users: a admin, a candidate and a employer at the end run ``` php artisan optimize:clear```) 
+    - Run below code (it can create migrations and insert demo data with 3 users: a admin, a candidate and a employer at the end run php artisan optimize:clear) 
       ``` 
       php artisan project:insert-demo-data
       ```
