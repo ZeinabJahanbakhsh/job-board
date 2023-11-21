@@ -13,6 +13,7 @@ Each user has a profile:
 - Authentication: [Sanctum](https://laravel.com/docs/9.x/sanctum)
 - Authorization: Gate and Policy
 - Laravel Socialite: google, github
+- CKEditor(https://ckeditor.com/docs/index.html)
 
 # How to use:
 - Clone the repository with git clone
