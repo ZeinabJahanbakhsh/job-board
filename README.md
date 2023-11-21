@@ -18,10 +18,10 @@ Each user has a profile:
 - Clone the repository with git clone
 - Copy .env.example file to .env and edit database credentials there and make your database.
 - Run
-    ```
+  ```
   composer install
   ```
-  - Run
+
   ```
   php artisan key:generate
   ```
