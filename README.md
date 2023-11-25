@@ -14,6 +14,7 @@ Each user has a profile:
 - Authorization: Gate and Policy
 - Laravel Socialite: google, github
 - [CKEditor](https://ckeditor.com/docs/index.html)
+- Console command : project:insert-demo-data and project:insert-additional-data
 
 # How to use:
 - Clone the repository with git clone
