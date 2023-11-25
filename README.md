@@ -63,6 +63,9 @@ Each user has a profile:
 ## Login form
 ![login](https://github.com/ZeinabJahanbakhsh/job-board/assets/18625433/556bde3f-8c31-4245-9748-c9e5a37ac0e0)
 
+## Register form
+![Register](https://github.com/ZeinabJahanbakhsh/job-board/assets/18625433/5cf06a7d-c01c-4de5-ad10-5699f7825626)
+
 ## Employer dashboard
 ![employer](https://github.com/ZeinabJahanbakhsh/job-board/assets/18625433/526f8079-f9ac-4ec1-bd5f-d4ff0e7a87b2)
 
