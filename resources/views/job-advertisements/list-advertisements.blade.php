@@ -33,7 +33,7 @@
                                     <th>Company Name</th>
                                     <th>Title</th>
                                     <th>Description</th>
-                                    <th>tags</th>
+                                    <th>Category</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
