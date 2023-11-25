@@ -61,14 +61,13 @@ Each user has a profile:
 
 # A few screenshots
 ## Login form
-![login](https://github.com/ZeinabJahanbakhsh/job-board-larastarters/assets/18625433/69988486-6dc6-4d34-94fa-e008155768c3)
+![login](https://github.com/ZeinabJahanbakhsh/job-board/assets/18625433/556bde3f-8c31-4245-9748-c9e5a37ac0e0)
 
 ## Employer dashboard
-![employer](https://github.com/ZeinabJahanbakhsh/job-board-larastarters/assets/18625433/35e304cd-e7bc-43c1-9efe-650c016a6a01)
+![employer](https://github.com/ZeinabJahanbakhsh/job-board/assets/18625433/526f8079-f9ac-4ec1-bd5f-d4ff0e7a87b2)
 
 ## Candidate dashboard
-![candidate](https://github.com/ZeinabJahanbakhsh/job-board-larastarters/assets/18625433/749bfac0-d920-40db-9f3b-9e2a219fc1e6)
-
+![candidate](https://github.com/ZeinabJahanbakhsh/job-board/assets/18625433/610dd4b9-11ec-41d1-8dad-e2ece928d591)
 
 
 ## License
